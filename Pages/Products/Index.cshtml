@@ -1,0 +1,33 @@
+@page
+@model wt_lab5_5razor_ageyavich.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "Каталог";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">Каталог товаров</h1>
+        <a asp-page="/Products/Create" class="btn btn-primary">➕ Добавить товар</a>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm rounded-4">
+                    <div class="card-body">
+                        <span class="badge bg-secondary mb-2">ID: @product.Id</span>
+                        @if (product.IsAvailable)
+                        {
+                            <span class="badge bg-success mb-2">В наличии</span>
+                        }
+                        <h5 class="card-title fw-bold">@product.Name</h5>
+                        <p class="text-muted mb-2">@product.Category</p>
+                        <p class="fs-4 fw-bold text-primary">@product.Price.ToString("N0") ₽</p>
+                        <a asp-page="/Products/Details" asp-route-id="@product.Id" class="btn btn-outline-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

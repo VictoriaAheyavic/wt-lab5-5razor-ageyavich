@@ -1,0 +1,13 @@
+@page
+@model wt_lab5_5razor_ageyavich.Pages.Products.DetailsModel
+
+<div class="container py-4">
+    <h1 class="fw-bold mb-3">@Model.Product.Name</h1>
+    <div class="card shadow-sm rounded-4 p-4">
+        <p><strong>ID:</strong> @Model.Product.Id</p>
+        <p><strong>Категория:</strong> @Model.Product.Category</p>
+        <p><strong>Цена:</strong> @Model.Product.Price.ToString("N0") ₽</p>
+        <p><strong>Статус:</strong> @(Model.Product.IsAvailable ? "В наличии" : "Нет в наличии")</p>
+        <a asp-page="/Products/Index" class="btn btn-secondary mt-3">← Назад к списку</a>
+    </div>
+</div>
